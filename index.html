@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App in Need | LPG Buddy (C2C)</title>
+    <meta
+      name="description"
+      content="Find or rent LPG cylinders nearby from trusted local users. Futuristic C2C MVP for students, renters, and workers."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">⚡ App in Need • LPG Buddy</div>
+        <span class="pill">Future-Ready C2C Rental</span>
+      </nav>
+
+      <section class="hero-content">
+        <p class="kicker">Urban Living • Instant Utility Access</p>
+        <h1>Rent LPG cylinders from verified nearby users.</h1>
+        <p>
+          Built for students, aspirants, and professionals living on rent with no
+          LPG connection. Search, compare, and connect in minutes.
+        </p>
+
+        <div class="cta-row">
+          <a href="#search" class="btn btn-primary">Find LPG Now</a>
+          <a href="#list" class="btn btn-secondary">Start Listing</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="search" class="card search-card">
+        <h2>Search Live Availability</h2>
+        <p>Filter by area and max daily rent to discover suitable options.</p>
+
+        <form id="searchForm" class="search-grid">
+          <label>
+            <span>Area</span>
+            <input
+              type="text"
+              id="areaInput"
+              placeholder="e.g., Mukherjee Nagar"
+              aria-label="Area"
+            />
+          </label>
+
+          <label>
+            <span>Max Daily Rent (₹)</span>
+            <input
+              type="number"
+              id="budgetInput"
+              placeholder="e.g., 100"
+              min="50"
+              aria-label="Max daily rent"
+            />
+          </label>
+
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div id="resultCount" class="result-count" aria-live="polite"></div>
+        <div id="listings" class="listing-grid"></div>
+      </section>
+
+      <section id="list" class="card list-card">
+        <h2>Own an extra cylinder?</h2>
+        <p>Monetize idle access by sharing with nearby renters on demand.</p>
+        <ul>
+          <li>✔ Trusted profile verification (next phase)</li>
+          <li>✔ Flexible durations: 3 days to 3 months</li>
+          <li>✔ Direct owner-renter connection</li>
+        </ul>
+
+        <div class="helper-box">
+          <p>
+            <strong>Next upgrade:</strong> Add maps + in-app WhatsApp connect for
+            faster bookings.
+          </p>
+        </div>
+
+        <button class="btn btn-secondary" type="button">Become a Supplier</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>App in Need • LPG Buddy • Stylish C2C utility access MVP</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
