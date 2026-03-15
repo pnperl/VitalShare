@@ -39,8 +39,17 @@ Open: `http://localhost:4173`
 
 ---
 
+## Live deployment fix (styles not visible)
+If your deployment showed unstyled HTML before, this version inlines the main CSS inside `index.html`, so style does not depend on external CSS loading.
+
+Also verify:
+- `index.html` and `script.js` are in the same deployed folder.
+- path uses `./script.js` (already updated).
+- browser cache is hard refreshed (`Ctrl+Shift+R` / `Cmd+Shift+R`).
+
+---
+
 ## Notes for next version
 - Add OTP login and verified user badges.
 - Add exact map pins and distance sorting.
 - Add in-app chat/WhatsApp connect and booking request flow.
-- 
