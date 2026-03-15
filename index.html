@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App in Need | LPG Buddy (C2C)</title>
+    <title>App in Need | LPG Buddy Live</title>
     <meta
       name="description"
-      content="Find or rent LPG cylinders nearby from trusted local users. Futuristic C2C MVP for students, renters, and workers."
+      content="Production-ready C2C LPG rental platform for renters. Discover nearby listings on live maps, filter by price and distance, and post your own cylinder instantly."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,345 +14,99 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --bg-0: #060816;
-        --bg-1: #0a1230;
-        --glass: rgba(15, 24, 54, 0.58);
-        --card: rgba(18, 28, 66, 0.72);
-        --text: #ecf1ff;
-        --muted: #a9b6dc;
-        --line: rgba(125, 153, 255, 0.35);
-        --neon-cyan: #22e7ff;
-        --neon-violet: #9b6bff;
-        --neon-orange: #ff7a18;
-      }
-
-      * {
-        box-sizing: border-box;
-        font-family: 'Inter', sans-serif;
-      }
-
-      body {
-        margin: 0;
-        color: var(--text);
-        min-height: 100vh;
-        background:
-          radial-gradient(circle at 8% 10%, rgba(34, 231, 255, 0.18), transparent 28%),
-          radial-gradient(circle at 88% 18%, rgba(155, 107, 255, 0.2), transparent 32%),
-          linear-gradient(145deg, var(--bg-0), var(--bg-1) 60%, #101b45);
-        overflow-x: hidden;
-      }
-
-      .orb {
-        position: fixed;
-        width: 280px;
-        height: 280px;
-        border-radius: 50%;
-        filter: blur(70px);
-        z-index: -1;
-        opacity: 0.55;
-      }
-
-      .orb-one {
-        top: -90px;
-        left: -90px;
-        background: var(--neon-cyan);
-      }
-
-      .orb-two {
-        right: -120px;
-        top: 130px;
-        background: var(--neon-violet);
-      }
-
-      .hero {
-        padding: 1.25rem 1.3rem 2.1rem;
-      }
-
-      .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.8rem;
-      }
-
-      .brand {
-        font-weight: 800;
-        letter-spacing: 0.3px;
-        text-shadow: 0 0 18px rgba(34, 231, 255, 0.35);
-      }
-
-      .pill {
-        border: 1px solid var(--line);
-        color: var(--muted);
-        padding: 0.5rem 0.95rem;
-        border-radius: 999px;
-        font-size: 0.88rem;
-        background: rgba(9, 16, 42, 0.7);
-        box-shadow: inset 0 0 20px rgba(34, 231, 255, 0.08);
-      }
-
-      .hero-content {
-        max-width: 830px;
-        padding: 1rem;
-        border-radius: 20px;
-        border: 1px solid var(--line);
-        background: var(--glass);
-        backdrop-filter: blur(14px);
-        box-shadow: 0 15px 55px rgba(0, 0, 0, 0.35);
-      }
-
-      .kicker {
-        margin: 0;
-        color: #ffd4a8;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.82rem;
-      }
-
-      .hero h1 {
-        margin: 0.4rem 0 0.8rem;
-        font-size: clamp(1.95rem, 4.5vw, 3.4rem);
-        line-height: 1.12;
-      }
-
-      .hero p {
-        color: var(--muted);
-        margin: 0 0 1rem;
-      }
-
-      .cta-row {
-        display: flex;
-        gap: 0.7rem;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        border: 1px solid transparent;
-        border-radius: 12px;
-        padding: 0.72rem 1rem;
-        font-weight: 700;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--neon-orange), #ff3f6d);
-        color: white;
-        box-shadow: 0 8px 28px rgba(255, 90, 70, 0.35);
-      }
-
-      .btn-secondary {
-        background: linear-gradient(135deg, #16b7ff, #00dfc8);
-        color: #05222c;
-        box-shadow: 0 8px 28px rgba(22, 183, 255, 0.32);
-      }
-
-      main {
-        width: min(1120px, 94%);
-        margin: 0 auto 2.1rem;
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 1rem;
-      }
-
-      .card {
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 1rem;
-        background: var(--card);
-        backdrop-filter: blur(12px);
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), 0 18px 36px rgba(0, 0, 0, 0.35);
-      }
-
-      h2 {
-        margin-top: 0;
-      }
-
-      .search-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr auto;
-        gap: 0.7rem;
-        margin-top: 0.75rem;
-        align-items: end;
-      }
-
-      label {
-        display: grid;
-        gap: 0.34rem;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      input {
-        border: 1px solid #3953a8;
-        border-radius: 10px;
-        background: rgba(8, 14, 38, 0.85);
-        color: var(--text);
-        padding: 0.72rem;
-      }
-
-      input:focus-visible,
-      button:focus-visible,
-      a:focus-visible {
-        outline: 2px solid #91dcff;
-        outline-offset: 2px;
-      }
-
-      .result-count {
-        margin: 0.85rem 0;
-        color: #b9c6ed;
-      }
-
-      .listing-grid {
-        display: grid;
-        gap: 0.7rem;
-      }
-
-      .listing-card {
-        border: 1px solid #3753aa;
-        border-radius: 12px;
-        background: rgba(11, 20, 49, 0.82);
-        padding: 0.8rem;
-      }
-
-      .listing-card h3 {
-        margin: 0;
-        font-size: 1rem;
-      }
-
-      .meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.62rem;
-        margin-top: 0.35rem;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .helper-box {
-        border: 1px dashed #4f68bd;
-        border-radius: 10px;
-        padding: 0.7rem;
-        background: rgba(16, 28, 65, 0.75);
-        margin-bottom: 0.8rem;
-      }
-
-      footer {
-        text-align: center;
-        color: var(--muted);
-        padding: 0.2rem 1rem 1.6rem;
-      }
-
-      @media (max-width: 920px) {
-        main {
-          grid-template-columns: 1fr;
-        }
-
-        .search-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .topbar {
-          gap: 0.8rem;
-          flex-wrap: wrap;
-        }
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="orb orb-one"></div>
-    <div class="orb orb-two"></div>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
 
-    <header class="hero">
-      <nav class="topbar">
-        <div class="brand">⚡ App in Need • LPG Buddy</div>
-        <span class="pill">Future-Ready C2C Rental</span>
+    <header class="hero wrap">
+      <nav class="topbar glass">
+        <div class="brand">⚡ App in Need — LPG Buddy</div>
+        <div class="top-actions">
+          <span class="pill">Production Build</span>
+          <a class="btn btn-secondary" href="#addListingForm">List Cylinder</a>
+        </div>
       </nav>
 
-      <section class="hero-content">
-        <p class="kicker">Urban Living • Instant Utility Access</p>
-        <h1>Rent LPG cylinders from verified nearby users.</h1>
+      <section class="hero-content glass">
+        <p class="kicker">C2C Utility Network • Students • Renters • Professionals</p>
+        <h1>Find nearby LPG cylinders with live map + dynamic listings.</h1>
         <p>
-          Built for students, aspirants, and professionals living on rent with no
-          LPG connection. Search, compare, and connect in minutes.
+          Search by area, budget, and distance. View results on map and connect
+          directly with local owners for short-term LPG rental.
         </p>
-
-        <div class="cta-row">
-          <a href="#search" class="btn btn-primary">Find LPG Now</a>
-          <a href="#list" class="btn btn-secondary">Start Listing</a>
-        </div>
+        <div class="hero-metrics" id="heroMetrics"></div>
       </section>
     </header>
 
-    <main>
-      <section id="search" class="card search-card">
+    <main class="wrap layout">
+      <section class="card glass search-panel">
         <h2>Search Live Availability</h2>
-        <p>Filter by area and max daily rent to discover suitable options.</p>
 
         <form id="searchForm" class="search-grid">
           <label>
-            <span>Area</span>
-            <input
-              type="text"
-              id="areaInput"
-              placeholder="e.g., Mukherjee Nagar"
-              aria-label="Area"
-            />
+            <span>Search area</span>
+            <input id="areaInput" type="text" placeholder="e.g., Mukherjee Nagar, Delhi" required />
           </label>
-
           <label>
-            <span>Max Daily Rent (₹)</span>
-            <input
-              type="number"
-              id="budgetInput"
-              placeholder="e.g., 100"
-              min="50"
-              aria-label="Max daily rent"
-            />
+            <span>Max daily rent (₹)</span>
+            <input id="budgetInput" type="number" min="50" value="150" />
           </label>
-
-          <button type="submit" class="btn btn-primary">Search</button>
+          <label>
+            <span>Max distance (km)</span>
+            <input id="distanceInput" type="number" min="1" value="15" />
+          </label>
+          <button type="submit" class="btn btn-primary">Search on Map</button>
         </form>
 
-        <div id="resultCount" class="result-count" aria-live="polite"></div>
+        <div id="searchStatus" class="status"></div>
+
+        <div class="map-shell">
+          <div id="map"></div>
+        </div>
+
+        <div class="results-head">
+          <h3>Matching Listings</h3>
+          <span id="resultCount" class="pill"></span>
+        </div>
         <div id="listings" class="listing-grid"></div>
       </section>
 
-      <section id="list" class="card list-card">
-        <h2>Own an extra cylinder?</h2>
-        <p>Monetize idle access by sharing with nearby renters on demand.</p>
-        <ul>
-          <li>✔ Trusted profile verification (next phase)</li>
-          <li>✔ Flexible durations: 3 days to 3 months</li>
-          <li>✔ Direct owner-renter connection</li>
-        </ul>
+      <aside class="card glass sidebar">
+        <h2>Post Live Listing</h2>
+        <p>Add your cylinder listing. Area gets geocoded automatically for map visibility.</p>
 
-        <div class="helper-box">
-          <p>
-            <strong>Next upgrade:</strong> Add maps + in-app WhatsApp connect for
-            faster bookings.
-          </p>
-        </div>
+        <form id="addListingForm" class="add-grid">
+          <input id="ownerName" type="text" placeholder="Owner name" required />
+          <input id="ownerPhone" type="text" placeholder="Phone number" required />
+          <input id="ownerArea" type="text" placeholder="Area / locality" required />
+          <input id="dailyRent" type="number" placeholder="Daily rent ₹" min="50" required />
+          <input id="deposit" type="number" placeholder="Deposit ₹" min="0" required />
+          <input id="duration" type="text" placeholder="Duration e.g., 7-30 days" required />
+          <textarea id="notes" placeholder="Notes (pickup timing, regulator included, etc.)"></textarea>
+          <button type="submit" class="btn btn-primary">Publish Listing</button>
+        </form>
 
-        <button class="btn btn-secondary" type="button">Become a Supplier</button>
-      </section>
+        <div id="formStatus" class="status"></div>
+      </aside>
     </main>
 
-    <footer>
-      <p>App in Need • LPG Buddy • Stylish C2C utility access MVP</p>
+    <footer class="wrap footer">
+      <p>© App in Need • LPG Buddy Live • Dynamic map-first C2C rental marketplace</p>
     </footer>
 
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script src="./script.js"></script>
   </body>
 </html>
